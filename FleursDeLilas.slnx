@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Database/01-schema.sql" />
+    <File Path="Database/02-data-local.sql" />
+    <File Path="docker-compose.yml" />
+  </Folder>
+  <Project Path="FleursDeLilas.API/FleursDeLilas.API.csproj" />
+</Solution>
