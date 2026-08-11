@@ -1,3 +1,4 @@
+using System.Text;
 using BCrypt.Net;
 using Dapper;
 using FleursDeLilas.API.Data;
@@ -53,6 +54,7 @@ namespace FleursDeLilas.API.Services.Implementations
                 {
                     Success = true,
                     Message = "User registered successfully.",
+                    Token = GenerateToken(user),
                     User = new LoginResponseDto
                     {
                         Id = user.Id,
@@ -100,6 +102,7 @@ namespace FleursDeLilas.API.Services.Implementations
             {
                 Success = true,
                 Message = "Login successful.",
+                Token = GenerateToken(user),
                 User = new LoginResponseDto
                 {
                     Id = user.Id,
@@ -108,6 +111,12 @@ namespace FleursDeLilas.API.Services.Implementations
                     UpdatedAt = user.UpdatedAt
                 }
             };
+        }
+
+        private static string GenerateToken(FleursUser user)
+        {
+            var raw = $"{user.Id}|{user.Username}|{DateTime.UtcNow:O}";
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(raw));
         }
 
         private async Task<FleursUser?> GetUserByUsernameAsync(string username)
