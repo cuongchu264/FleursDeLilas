@@ -11,7 +11,7 @@ namespace FleursDeLilas.API.Data
 
         public DbSet<FleursUser> FleursUsers { get; set; } = null!;
         public DbSet<Flower> Flowers { get; set; } = null!;
-        //public DbSet<Supply> Supplies { get; set; } = null!;
+        public DbSet<Supply> Supplies { get; set; } = null!;
         //public DbSet<Order> Orders { get; set; } = null!;
         //public DbSet<OrderPrepareFlo> OrderPrepareFlos { get; set; } = null!;
         //public DbSet<OrderPrepareSupply> OrderPrepareSupplies { get; set; } = null!;
@@ -85,6 +85,42 @@ namespace FleursDeLilas.API.Data
 
                 entity.Property(e => e.Note)
                     .HasColumnName("flo_note")
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnName("created_at")
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                entity.Property(e => e.UpdatedAt)
+                    .HasColumnName("updated_at")
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
+            });
+
+            // Configure mapping for supply table
+            modelBuilder.Entity<Supply>(entity =>
+            {
+                entity.ToTable("supply");
+
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id");
+
+                entity.Property(e => e.Name)
+                    .HasColumnName("sup_name")
+                    .HasMaxLength(255)
+                    .IsRequired();
+
+                entity.Property(e => e.Price)
+                    .HasColumnName("sup_price")
+                    .HasDefaultValue(0);
+
+                entity.Property(e => e.Count)
+                    .HasColumnName("sup_count")
+                    .HasDefaultValue(0);
+
+                entity.Property(e => e.Note)
+                    .HasColumnName("sup_note")
                     .HasMaxLength(500);
 
                 entity.Property(e => e.CreatedAt)

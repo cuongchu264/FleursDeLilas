@@ -32,6 +32,11 @@ builder.Services.AddScoped<IFlowerRepository, FlowerRepository>();
 builder.Services.AddScoped<IFlowerQueryService, FlowerQueryService>();
 builder.Services.AddScoped<IFlowerCommandService, FlowerCommandService>();
 
+// Register Repositories and Services for Supply Module
+builder.Services.AddScoped<ISupplyRepository, SupplyRepository>();
+builder.Services.AddScoped<ISupplyQueryService, SupplyQueryService>();
+builder.Services.AddScoped<ISupplyCommandService, SupplyCommandService>();
+
 // Register Auth Service
 builder.Services.AddScoped<IAuthService, AuthService>();
 
