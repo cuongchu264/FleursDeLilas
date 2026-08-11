@@ -27,6 +27,14 @@ builder.Services.AddScoped<IFleursUserRepository, FleursUserRepository>();
 builder.Services.AddScoped<IFleursUserQueryService, FleursUserQueryService>();
 builder.Services.AddScoped<IFleursUserCommandService, FleursUserCommandService>();
 
+// Register Repositories and Services for Flower Module
+builder.Services.AddScoped<IFlowerRepository, FlowerRepository>();
+builder.Services.AddScoped<IFlowerQueryService, FlowerQueryService>();
+builder.Services.AddScoped<IFlowerCommandService, FlowerCommandService>();
+
+// Register Auth Service
+builder.Services.AddScoped<IAuthService, AuthService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
