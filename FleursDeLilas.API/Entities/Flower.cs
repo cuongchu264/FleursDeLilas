@@ -4,7 +4,7 @@ namespace FleursDeLilas.API.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
-        public long Price { get; set; }
+        public decimal Price { get; set; }
         public int TotalCount { get; set; }
         public int AvailableCount { get; set; }
         public int FailedCount { get; set; }

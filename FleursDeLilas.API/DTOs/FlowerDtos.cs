@@ -4,7 +4,7 @@ namespace FleursDeLilas.API.DTOs
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
-        public long Price { get; set; }
+        public decimal Price { get; set; }
         public int TotalCount { get; set; }
         public int AvailableCount { get; set; }
         public int FailedCount { get; set; }
@@ -17,7 +17,7 @@ namespace FleursDeLilas.API.DTOs
     public class CreateFlowerDto
     {
         public string Name { get; set; } = null!;
-        public long Price { get; set; }
+        public decimal Price { get; set; }
         public int TotalCount { get; set; }
         public int AvailableCount { get; set; }
         public int FailedCount { get; set; }
@@ -28,7 +28,7 @@ namespace FleursDeLilas.API.DTOs
     public class UpdateFlowerDto
     {
         public string Name { get; set; } = null!;
-        public long Price { get; set; }
+        public decimal Price { get; set; }
         public int TotalCount { get; set; }
         public int AvailableCount { get; set; }
         public int FailedCount { get; set; }

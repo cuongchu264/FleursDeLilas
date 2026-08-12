@@ -66,7 +66,8 @@ namespace FleursDeLilas.API.Data
 
                 entity.Property(e => e.Price)
                     .HasColumnName("flo_price")
-                    .HasDefaultValue(0);
+                    .HasPrecision(12, 2)
+                    .HasDefaultValue(0m);
 
                 entity.Property(e => e.TotalCount)
                     .HasColumnName("flo_toal_count")
@@ -113,11 +114,15 @@ namespace FleursDeLilas.API.Data
 
                 entity.Property(e => e.Price)
                     .HasColumnName("sup_price")
-                    .HasDefaultValue(0);
+                    .HasPrecision(12, 2)
+                    .HasDefaultValue(0m);
 
                 entity.Property(e => e.Count)
                     .HasColumnName("sup_count")
                     .HasDefaultValue(0);
+
+                entity.Property(e => e.BuyDate)
+                    .HasColumnName("sup_buy_date");
 
                 entity.Property(e => e.Note)
                     .HasColumnName("sup_note")

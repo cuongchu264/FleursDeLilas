@@ -8,25 +8,25 @@ INSERT INTO fleurs_user (username, password) VALUES
 
 -- 2. Seed Flower Inventory (flower)
 INSERT INTO flower (flo_name, flo_price, flo_toal_count, flo_avaiable_count, flo_failed_count, flo_buy_date, flo_note) VALUES
-('Red Ecuador Rose', 35000, 100, 85, 15, '2026-08-08 07:00:00+07', 'Fresh import from night flower market, large blooms'),
-('Purple Dutch Tulip', 45000, 60, 50, 10, '2026-08-09 08:30:00+07', 'Stored in cold room at 15C'),
-('Blue Hydrangea', 60000, 40, 38, 2, '2026-08-09 08:30:00+07', 'Requires continuous misting'),
-('White Dutch Baby Breath', 25000, 80, 75, 5, '2026-08-07 06:00:00+07', 'Used as filler flowers for main bouquet'),
-('Da Lat Sunflower', 20000, 50, 45, 5, '2026-08-10 06:30:00+07', 'Thick stem, fresh branch');
+('Red Ecuador Rose', 35, 100, 85, 15, '2026-08-08 07:00:00+07', 'Fresh import from night flower market, large blooms'),
+('Purple Dutch Tulip', 45, 60, 50, 10, '2026-08-09 08:30:00+07', 'Stored in cold room at 15C'),
+('Blue Hydrangea', 60, 40, 38, 2, '2026-08-09 08:30:00+07', 'Requires continuous misting'),
+('White Dutch Baby Breath', 25, 80, 75, 5, '2026-08-07 06:00:00+07', 'Used as filler flowers for main bouquet'),
+('Da Lat Sunflower', 20, 50, 45, 5, '2026-08-10 06:30:00+07', 'Thick stem, fresh branch');
 
 -- 3. Seed Supply Inventory (supply)
-INSERT INTO supply (sup_name, sup_price, sup_count, sup_note) VALUES
-('Korean Sand White Wrapping Paper', 15000, 200, 'Waterproof quality material'),
-('Cream Silk Ribbon', 8000, 150, 'Satin ribbon 4cm width'),
-('Round Rattan Wooden Basket Size M', 55000, 30, 'Premium basket for grand opening arrangements'),
-('Fleurs de Lilas Greeting Card', 5000, 500, 'Printed studio logo card attached to flowers'),
-('Oasis Floral Foam', 12000, 100, 'Fast water-absorbing foam');
+INSERT INTO supply (sup_name, sup_price, sup_count, sup_buy_date, sup_note) VALUES
+('Korean Sand White Wrapping Paper', 15, 200, '2026-08-08 07:00:00+07', 'Waterproof quality material'),
+('Cream Silk Ribbon', 8, 150, '2026-08-08 07:00:00+07', 'Satin ribbon 4cm width'),
+('Round Rattan Wooden Basket Size M', 55, 30, '2026-08-09 09:00:00+07', 'Premium basket for grand opening arrangements'),
+('Fleurs de Lilas Greeting Card', 5, 500, '2026-08-07 06:00:00+07', 'Printed studio logo card attached to flowers'),
+('Oasis Floral Foam', 12, 100, '2026-08-09 08:30:00+07', 'Fast water-absorbing foam');
 
 -- 4. Seed Orders (fleurs_order)
 INSERT INTO fleurs_order (order_name, order_price, order_ship_price, order_date) VALUES
-('Rose Bouquet for Ms. Linh Birthday', 650000, 30000, '2026-08-10 09:30:00+07'),
-('Hydrangea Floral Basket for Grand Opening', 1200000, 50000, '2026-08-10 10:15:00+07'),
-('Purple Tulip Bouquet for Wedding Anniversary', 850000, 0, '2026-08-10 14:00:00+07');
+('Rose Bouquet for Ms. Linh Birthday', 650, 30, '2026-08-10 09:30:00+07'),
+('Hydrangea Floral Basket for Grand Opening', 1200, 50, '2026-08-10 10:15:00+07'),
+('Purple Tulip Bouquet for Wedding Anniversary', 850, 0, '2026-08-10 14:00:00+07');
 
 -- 5. Order Flower Details (order_prepare_flo)
 -- Order 1 (Rose Bouquet): 10 Ecuador Roses + 3 Baby Breaths

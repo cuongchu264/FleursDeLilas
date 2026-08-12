@@ -14,6 +14,20 @@ namespace FleursDeLilas.API.Services.Implementations
             _supplyRepository = supplyRepository;
         }
 
+        private static DateTime? NormalizeUtcDate(DateTime? value)
+        {
+            if (value == null)
+                return null;
+
+            if (value.Value.Kind == DateTimeKind.Utc)
+                return value;
+
+            if (value.Value.Kind == DateTimeKind.Unspecified)
+                return DateTime.SpecifyKind(value.Value, DateTimeKind.Utc);
+
+            return value.Value.ToUniversalTime();
+        }
+
         public async Task<SupplyDto> CreateAsync(CreateSupplyDto dto)
         {
             var entity = new Supply
@@ -21,6 +35,7 @@ namespace FleursDeLilas.API.Services.Implementations
                 Name = dto.Name,
                 Price = dto.Price,
                 Count = dto.Count,
+                BuyDate = NormalizeUtcDate(dto.BuyDate),
                 Note = dto.Note,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow
@@ -49,6 +64,7 @@ namespace FleursDeLilas.API.Services.Implementations
             entity.Name = dto.Name;
             entity.Price = dto.Price;
             entity.Count = dto.Count;
+            entity.BuyDate = NormalizeUtcDate(dto.BuyDate);
             entity.Note = dto.Note;
             entity.UpdatedAt = DateTime.UtcNow;
 

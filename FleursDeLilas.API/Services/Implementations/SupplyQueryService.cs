@@ -19,11 +19,11 @@ namespace FleursDeLilas.API.Services.Implementations
             using var connection = _connectionFactory.CreateConnection();
 
             // Execute raw SQL using Dapper for optimal read performance
-            const string sql = @"
-                SELECT id, sup_name AS name, sup_price AS price, sup_count AS count, 
-                       sup_note AS note, created_at AS createdat, updated_at AS updatedat
-                FROM supply 
-                ORDER BY id DESC;";
+                 const string sql = @"
+                  SELECT id, sup_name AS name, sup_price AS price, sup_count AS count, 
+                      sup_buy_date AS buydate, sup_note AS note, created_at AS createdat, updated_at AS updatedat
+                  FROM supply 
+                  ORDER BY sup_buy_date DESC NULLS LAST, id DESC;";
 
             return await connection.QueryAsync<SupplyDto>(sql);
         }
@@ -32,11 +32,11 @@ namespace FleursDeLilas.API.Services.Implementations
         {
             using var connection = _connectionFactory.CreateConnection();
 
-            const string sql = @"
-                SELECT id, sup_name AS name, sup_price AS price, sup_count AS count, 
-                       sup_note AS note, created_at AS createdat, updated_at AS updatedat
-                FROM supply 
-                WHERE id = @Id;";
+                 const string sql = @"
+                  SELECT id, sup_name AS name, sup_price AS price, sup_count AS count, 
+                      sup_buy_date AS buydate, sup_note AS note, created_at AS createdat, updated_at AS updatedat
+                  FROM supply 
+                  WHERE id = @Id;";
 
             return await connection.QueryFirstOrDefaultAsync<SupplyDto>(sql, new { Id = id });
         }

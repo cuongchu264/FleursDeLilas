@@ -24,7 +24,7 @@ namespace FleursDeLilas.API.Services.Implementations
                        flo_avaiable_count AS availablecount, flo_failed_count AS failedcount, 
                        flo_buy_date AS buydate, flo_note AS note, created_at AS createdat, updated_at AS updatedat
                 FROM flower 
-                ORDER BY id DESC;";
+                ORDER BY flo_buy_date DESC NULLS LAST, id DESC;";
 
             return await connection.QueryAsync<FlowerDto>(sql);
         }
