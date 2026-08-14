@@ -51,6 +51,9 @@ builder.Services.AddScoped<ISupplyCommandService, SupplyCommandService>();
 // Register Auth Service
 builder.Services.AddScoped<IAuthService, AuthService>();
 
+// Register Order Service
+builder.Services.AddScoped<IOrderService, OrderService>();
+
 var app = builder.Build();
 
 app.UseCors("AllowReactApp");

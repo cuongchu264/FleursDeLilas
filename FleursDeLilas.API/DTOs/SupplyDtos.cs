@@ -6,6 +6,7 @@ namespace FleursDeLilas.API.DTOs
         public string Name { get; set; } = null!;
         public decimal Price { get; set; }
         public int Count { get; set; }
+        public int SoldCount { get; set; }
         public DateTime? BuyDate { get; set; }
         public string? Note { get; set; }
         public DateTime CreatedAt { get; set; }
@@ -17,6 +18,7 @@ namespace FleursDeLilas.API.DTOs
         public string Name { get; set; } = null!;
         public decimal Price { get; set; }
         public int Count { get; set; }
+        public int SoldCount { get; set; }
         public DateTime? BuyDate { get; set; }
         public string? Note { get; set; }
     }
@@ -26,6 +28,7 @@ namespace FleursDeLilas.API.DTOs
         public string Name { get; set; } = null!;
         public decimal Price { get; set; }
         public int Count { get; set; }
+        public int SoldCount { get; set; }
         public DateTime? BuyDate { get; set; }
         public string? Note { get; set; }
     }

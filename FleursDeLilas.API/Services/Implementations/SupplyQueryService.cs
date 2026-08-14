@@ -20,7 +20,7 @@ namespace FleursDeLilas.API.Services.Implementations
 
             // Execute raw SQL using Dapper for optimal read performance
                  const string sql = @"
-                  SELECT id, sup_name AS name, sup_price AS price, sup_count AS count, 
+                  SELECT id, sup_name AS name, sup_price AS price, sup_count AS count, sup_sold_count AS soldcount,
                       sup_buy_date AS buydate, sup_note AS note, created_at AS createdat, updated_at AS updatedat
                   FROM supply 
                   ORDER BY sup_buy_date DESC NULLS LAST, id DESC;";
@@ -33,7 +33,7 @@ namespace FleursDeLilas.API.Services.Implementations
             using var connection = _connectionFactory.CreateConnection();
 
                  const string sql = @"
-                  SELECT id, sup_name AS name, sup_price AS price, sup_count AS count, 
+                  SELECT id, sup_name AS name, sup_price AS price, sup_count AS count, sup_sold_count AS soldcount,
                       sup_buy_date AS buydate, sup_note AS note, created_at AS createdat, updated_at AS updatedat
                   FROM supply 
                   WHERE id = @Id;";

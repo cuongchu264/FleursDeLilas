@@ -20,8 +20,8 @@ namespace FleursDeLilas.API.Services.Implementations
 
             // Execute raw SQL using Dapper for optimal read performance
             const string sql = @"
-                SELECT id, flo_name AS name, flo_price AS price, flo_toal_count AS totalcount, 
-                       flo_avaiable_count AS availablecount, flo_failed_count AS failedcount, 
+                  SELECT id, flo_name AS name, flo_price AS price, flo_toal_count AS totalcount, 
+                      flo_avaiable_count AS availablecount, flo_failed_count AS failedcount, flo_sold_count AS soldcount,
                        flo_buy_date AS buydate, flo_note AS note, created_at AS createdat, updated_at AS updatedat
                 FROM flower 
                 ORDER BY flo_buy_date DESC NULLS LAST, id DESC;";
@@ -34,8 +34,8 @@ namespace FleursDeLilas.API.Services.Implementations
             using var connection = _connectionFactory.CreateConnection();
 
             const string sql = @"
-                SELECT id, flo_name AS name, flo_price AS price, flo_toal_count AS totalcount, 
-                       flo_avaiable_count AS availablecount, flo_failed_count AS failedcount, 
+                  SELECT id, flo_name AS name, flo_price AS price, flo_toal_count AS totalcount, 
+                      flo_avaiable_count AS availablecount, flo_failed_count AS failedcount, flo_sold_count AS soldcount,
                        flo_buy_date AS buydate, flo_note AS note, created_at AS createdat, updated_at AS updatedat
                 FROM flower 
                 WHERE id = @Id;";
