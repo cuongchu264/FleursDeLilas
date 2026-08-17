@@ -7,11 +7,17 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://*:{port}");
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "http://localhost:3000") // Port React
+        policy.WithOrigins(
+            "http://localhost:5173",
+            "https://fleursdelilasfe-production.up.railway.app",
+            "http://localhost:3000") // Port React
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
@@ -57,6 +63,9 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 var app = builder.Build();
 
 app.UseCors("AllowReactApp");
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
