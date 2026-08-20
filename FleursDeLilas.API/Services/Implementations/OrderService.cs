@@ -27,7 +27,7 @@ namespace FleursDeLilas.API.Services.Implementations
             var flowerMap = new Dictionary<int, dynamic>();
             if (flowerIds.Any())
             {
-                var sql = "SELECT id, flo_price, flo_avaiable_count, flo_sold_count FROM flower WHERE id = ANY(@Ids) FOR UPDATE;";
+                var sql = "SELECT id, flo_price, flo_toal_count, flo_avaiable_count, flo_sold_count FROM flower WHERE id = ANY(@Ids) FOR UPDATE;";
                 var rows = await connection.QueryAsync(sql, new { Ids = flowerIds }, transaction);
                 foreach (var r in rows) flowerMap[(int)r.id] = r;
             }
@@ -49,7 +49,9 @@ namespace FleursDeLilas.API.Services.Implementations
                 int available = (int)row.flo_avaiable_count;
                 if (f.Qty > available) throw new Exception($"Requested qty for flower {f.Id} exceeds available ({available}).");
                 decimal price = (decimal)row.flo_price;
-                flowerTotal += price * f.Qty;
+                int totalCount = (int)row.flo_toal_count;
+                decimal unitPrice = totalCount > 0 ? price / totalCount : 0m;
+                flowerTotal += unitPrice * f.Qty;
             }
 
             decimal supplyTotal = 0m;
@@ -60,7 +62,9 @@ namespace FleursDeLilas.API.Services.Implementations
                 int available = (int)row.sup_count;
                 if (s.Qty > available) throw new Exception($"Requested qty for supply {s.Id} exceeds available ({available}).");
                 decimal price = (decimal)row.sup_price;
-                supplyTotal += price * s.Qty;
+                int totalCount = (int)row.sup_count;
+                decimal unitPrice = totalCount > 0 ? price / totalCount : 0m;
+                supplyTotal += unitPrice * s.Qty;
             }
 
             // Apply formula: bouquet = flowerTotal*3*1.3 + supplyTotal*2
