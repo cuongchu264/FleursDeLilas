@@ -1,8 +1,6 @@
 ﻿using FleursDeLilas.API.Entities;
 using Microsoft.EntityFrameworkCore;
 
-/**
-*/
 namespace FleursDeLilas.API.Data
 {
     public class AppDbContext : DbContext
